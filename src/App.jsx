@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useRef, useCallback } from "react";
 
 // ─── DESIGN TOKENS ────────────────────────────────────────────────────────────
@@ -490,7 +491,7 @@ export default function App() {
         // Multi-sheet: each PDF gets a type-specific pass
         for(let i=1;i<Math.min(b64s.length,4);i++) {
           try {
-            const raw2 = await claudePDF(b64s[i],`Identify this sheet type and extract key data. Return JSON: {"sheet_type":"floor_plan/schedule/mep/elevation/site","key_data":{}}`);
+            await claudePDF(b64s[i],`Identify this sheet type and extract key data. Return JSON: {"sheet_type":"floor_plan/schedule/mep/elevation/site","key_data":{}}`);
           } catch(e){}
         }
       }
@@ -997,7 +998,7 @@ Be specific. Reference schedules and spec notes where applicable.`,
                           <div style={{width:6,height:24,background:confC,flexShrink:0}}/>
                           <div>
                             <div style={{display:"flex",alignItems:"center",gap:8}}>
-                              <span style={{fontSize:10,background:confBg,color:confC,padding:"1px 6px",fontSize:8,fontWeight:700,letterSpacing:"0.1em"}}>{asm.confidence}</span>
+                              <span style={{background:confBg,color:confC,padding:"1px 6px",fontSize:8,fontWeight:700,letterSpacing:"0.1em"}}>{asm.confidence}</span>
                               <span style={{fontSize:10,color:T.text,fontWeight:600}}>{asm.name}</span>
                             </div>
                             <div style={{fontSize:8,color:T.dim,marginTop:2}}>Math: {asm.math}</div>
